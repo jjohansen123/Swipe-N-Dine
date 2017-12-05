@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.selectionPage">
+    tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.SelectionPage">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/logoConstraint"

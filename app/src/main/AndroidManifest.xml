@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AboutPage" />
         <activity android:name=".HistoryPage" />
-        <activity android:name=".selectionPage" />
+        <activity android:name=".SelectionPage" />
         <activity android:name=".ViewRestaurantPage"></activity>
     </application>
 
