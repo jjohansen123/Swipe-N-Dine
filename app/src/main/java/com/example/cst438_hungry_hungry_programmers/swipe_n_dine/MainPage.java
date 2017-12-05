@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.View.*;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainPage extends AppCompatActivity {
 
     Button aboutButton;
@@ -33,6 +35,7 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
             else if (v.getId() == R.id.logoutButton) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainPage.this, LoginPage.class);
                 startActivity(intent);
             }
