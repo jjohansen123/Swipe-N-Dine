@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "176124292622",
+    "firebase_url": "https://swipe-n-dine.firebaseio.com",
+    "project_id": "swipe-n-dine",
+    "storage_bucket": "swipe-n-dine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176124292622:android:43f69b5051f66565",
+        "android_client_info": {
+          "package_name": "com.example.cst438_hungry_hungry_programmers.swipe_n_dine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176124292622-h92s21to9ul6rl4gvhnuj1enrc34btc2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cst438_hungry_hungry_programmers.swipe_n_dine",
+            "certificate_hash": "cec531db442aeb84566fecbcf3c8ab1de67b6391"
+          }
+        },
+        {
+          "client_id": "176124292622-rtjikgf30d7bssg1t99jb6lmiblisbll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE4wg5C-ycTQnAQlk1OgKFh7QRCdDy-jw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176124292622-rtjikgf30d7bssg1t99jb6lmiblisbll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
