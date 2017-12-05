@@ -14,6 +14,7 @@ public class MainPage extends AppCompatActivity {
 
     Button aboutButton;
     Button logoutButton;
+    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,19 @@ public class MainPage extends AppCompatActivity {
 
         aboutButton = (Button) findViewById(R.id.aboutUsButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
+        startButton = (Button) findViewById(R.id.startSwipingButton);
+        startButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainPage.this,selectionPage.class));
+            }
+        });
 
         aboutButton.setOnClickListener(optionsListener);
         logoutButton.setOnClickListener(optionsListener);
     }
+
+
 
     private OnClickListener optionsListener = new OnClickListener() {
         @Override

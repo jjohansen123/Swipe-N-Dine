@@ -6,45 +6,38 @@
     android:layout_height="match_parent"
     tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.selectionPage">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/logoConstraint"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pizza Shop!"
+        android:textAlignment="center"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/aboutText">
+        tools:layout_editor_absoluteY="0dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pizza Shop!"
-            android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:id="@+id/titleLabel"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_below="@id/mainImage"
-            android:layout_alignParentBottom="true"
-            android:text="4.2 Italian"
-            android:id="@+id/rateCatLabel"
-            />
+    <TextView
+        android:id="@+id/rateCatLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/mainImage"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="4.2 Italian"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="315dp" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/mainImage"
-            android:layout_below="@id/titleLabel"
-            android:layout_above="@id/rateCatLabel"
-        />
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_above="@id/rateCatLabel"
+        android:layout_below="@id/titleLabel"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="115dp" />
 
-    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
