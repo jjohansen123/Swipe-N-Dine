@@ -47,6 +47,7 @@ public class MainPage extends AppCompatActivity {
             else if (v.getId() == R.id.logoutButton) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainPage.this, LoginPage.class);
+                intent.putExtra("isLogout",true);
                 startActivity(intent);
             }
         }
