@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Swipe-N-Dine.iml" filepath="$PROJECT_DIR$/Swipe-N-Dine.iml" />
-      <module fileurl="file://D:\school\Swipe-N-Dine\Swipe-N-Dine.iml" filepath="D:\school\Swipe-N-Dine\Swipe-N-Dine.iml" />
-      <module fileurl="file://C:\Users\David\.AndroidStudio3.0\swipendine\Swipe-N-Dine\.idea\Swipe-N-Dine.iml" filepath="C:\Users\David\.AndroidStudio3.0\swipendine\Swipe-N-Dine\.idea\Swipe-N-Dine.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\school\Swipe-N-Dine\app\app.iml" filepath="D:\school\Swipe-N-Dine\app\app.iml" />
     </modules>
   </component>
 </project>

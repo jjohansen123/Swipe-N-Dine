@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Swipe-N-Dine</string>
     <string name="title_activity_main_page">MainPage</string>
+    <string name="facebook_app_id">162273334381885</string>
 </resources>
