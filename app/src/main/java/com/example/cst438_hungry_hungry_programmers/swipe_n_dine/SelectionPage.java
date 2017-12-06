@@ -23,6 +23,9 @@ public class SelectionPage extends AppCompatActivity {
     TextView mRestaurantTitle, mRateCat;
     ImageView mMainImage;
 
+    private final String CLIENT_ID_KEY = getString(R.string.clientId);
+    private final String CLIENT_SECRET_KEY = getString(R.string.clientSecret);
+
     YelpFusionApiFactory yelpFusionApiFactory;
     YelpFusionApi yelpFusionApi;
 
@@ -66,7 +69,7 @@ public class SelectionPage extends AppCompatActivity {
         public void run() {
             try {
                 yelpFusionApiFactory = new YelpFusionApiFactory();
-                yelpFusionApi = yelpFusionApiFactory.createAPI(getString(R.string.clientId), getString(R.string.clientSecret));
+                yelpFusionApi = yelpFusionApiFactory.createAPI(CLIENT_ID_KEY, CLIENT_SECRET_KEY);
             } catch (Exception e) {
                 e.printStackTrace();
             }
