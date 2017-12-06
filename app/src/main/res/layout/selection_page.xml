@@ -12,32 +12,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pizza Shop!"
-        android:textAlignment="center"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_alignParentTop="true"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/rateCatLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/mainImage"
         android:gravity="center"
-        android:textAlignment="center"
-        android:text="4.2 Italian"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:text="4.2 Italian" />
 
     <ImageView
         android:id="@+id/mainImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:layout_above="@id/rateCatLabel"
-        android:layout_below="@id/titleLabel"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="115dp" />
+        android:layout_below="@id/titleLabel" />
 
 
 </android.support.constraint.ConstraintLayout>
