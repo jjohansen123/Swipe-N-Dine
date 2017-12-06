@@ -27,7 +27,7 @@ public class MainPage extends AppCompatActivity {
         startButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainPage.this,selectionPage.class));
+                startActivity(new Intent(MainPage.this,SelectionPage.class));
             }
         });
 
