@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -28,6 +29,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,6 +77,25 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference users = root.child("users");
+                users.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (!snapshot.child(mAuth.getUid()).exists()) {
+                            User u = new User();
+                            u.setUid(mAuth.getUid());
+                            DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("users");
+
+                            users.setValue(u);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(getApplicationContext(), "Error logging in", Toast.LENGTH_LONG).show();
+                    }
+                });
                 if (user != null && !isLogout && loginButton.getText().equals("Log out")) {
                     goMainScreen();
                 }
@@ -123,6 +148,4 @@ public class LoginPage extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-
 }
