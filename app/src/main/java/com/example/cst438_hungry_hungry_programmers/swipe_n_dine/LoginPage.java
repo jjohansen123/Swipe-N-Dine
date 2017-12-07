@@ -87,7 +87,8 @@ public class LoginPage extends AppCompatActivity {
                             u.setUid(mAuth.getUid());
                             DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("users");
 
-                            users.setValue(u);
+                            users.setValue(mAuth.getUid());
+                            users.child(mAuth.getUid()).setValue(u);
                         }
                     }
 

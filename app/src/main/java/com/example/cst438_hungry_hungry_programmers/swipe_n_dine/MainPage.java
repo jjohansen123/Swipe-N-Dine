@@ -15,12 +15,14 @@ public class MainPage extends AppCompatActivity {
     Button aboutButton;
     Button logoutButton;
     Button startButton;
+    Button friendsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
+        friendsButton = (Button) findViewById(R.id.friendsButton);
         aboutButton = (Button) findViewById(R.id.aboutUsButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
         startButton = (Button) findViewById(R.id.startSwipingButton);
@@ -30,7 +32,12 @@ public class MainPage extends AppCompatActivity {
                 startActivity(new Intent(MainPage.this,SelectionPage.class));
             }
         });
-
+        friendsButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainPage.this,FriendsPage.class));
+            }
+        });
         aboutButton.setOnClickListener(optionsListener);
         logoutButton.setOnClickListener(optionsListener);
     }

@@ -49,7 +49,11 @@
             android:name=".GroupPage"
             android:label="@string/title_activity_group_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FriendsPage"></activity>
+        <activity
+            android:name=".FriendsPage"
+            android:label="FriendsPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>
