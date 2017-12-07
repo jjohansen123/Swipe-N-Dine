@@ -2,4 +2,26 @@
     <string name="app_name">Swipe-N-Dine</string>
     <string name="title_activity_main_page">MainPage</string>
     <string name="facebook_app_id">162273334381885</string>
+    <string name="text_with_paragraphs">
+        <b>Our Project:</b> \n
+        Our team is David Jia, Coleman Johnston
+        and Joakim Johansen. We built this app using
+        Android SDK and Firebase API to store
+        in a database. We use the Yelp Fusion API
+        to get information about different restaurants
+        and the Firebase Facebook API to get the log in. \n \n
+        <b>Deliverables:</b>\n
+        We aim to build an Android application that assists users in
+        finding a restaurant to eat at by providing an interface
+        similar to tinder. The app will show the user pictures of
+        food then supply matches based on the dishes that the user
+        approved of. Essentially we hope to provide a tinder for that
+        matches people with restaurant instead of other people. \n \n
+        <b>Motivation:</b> \n
+        It can be exceptionally difficult to decide on a place to eat
+        especially if one does not have a specific craving at the time,
+        and Yelp only provides filters so it cannot choose a restaurant
+        for you.
+    </string>
+
 </resources>

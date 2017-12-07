@@ -71,7 +71,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null && !isLogout && loginButton.getText().equals("Log out")) {
+                if (user != null && !isLogout && loginButton.getText().equals("Logg av")) {
                     goMainScreen();
                 }
                 isLogout = false;
