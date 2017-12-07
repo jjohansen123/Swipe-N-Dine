@@ -84,7 +84,7 @@ public class SelectionPage extends AppCompatActivity {
                     Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
                     call.enqueue(callback);
                 } else {
-                    if (numOfSearchResults < 20) {
+                    if (currentBusinessIndex < 20) {
                         mRestaurantTitle.setText(businessNames.get(currentBusinessIndex));
                         Picasso.with(getApplicationContext())
                                 .load(businessImages.get(currentBusinessIndex))
