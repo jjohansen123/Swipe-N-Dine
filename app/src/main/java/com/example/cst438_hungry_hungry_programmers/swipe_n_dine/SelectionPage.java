@@ -46,7 +46,7 @@ public class SelectionPage extends AppCompatActivity {
     String currentUrl;
     boolean isAtStart = true;
     boolean updateFirst = true;
-    int numOfSearchResults = 0;
+    final int numOfSearchResults = 20;
     int currentBusinessIndex = 0;
 
     LocationManager mLocationManager;
@@ -84,12 +84,16 @@ public class SelectionPage extends AppCompatActivity {
                     Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
                     call.enqueue(callback);
                 } else {
-                    mRestaurantTitle.setText(businessNames.get(currentBusinessIndex));
-                    Picasso.with(getApplicationContext())
-                        .load(businessImages.get(currentBusinessIndex))
-                        .into(mMainImage);
-                    currentUrl = businessUrls.get(currentBusinessIndex);
-                    currentBusinessIndex++;
+                    if (numOfSearchResults < 20) {
+                        mRestaurantTitle.setText(businessNames.get(currentBusinessIndex));
+                        Picasso.with(getApplicationContext())
+                                .load(businessImages.get(currentBusinessIndex))
+                                .into(mMainImage);
+                        currentUrl = businessUrls.get(currentBusinessIndex);
+                        currentBusinessIndex++;
+                    } else {
+
+                    }
                 }
             }
             public void onSwipeBottom() {
@@ -115,8 +119,7 @@ public class SelectionPage extends AppCompatActivity {
         public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
             SearchResponse searchResponse = response.body();
             businesses = searchResponse.getBusinesses();
-            numOfSearchResults = searchResponse.getTotal();
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < numOfSearchResults; i++) {
                 businessNames.add(businesses.get(i).getName());
                 businessImages.add(businesses.get(i).getImageUrl());
                 businessUrls.add(businesses.get(i).getUrl());
