@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <activity android:name=".LoginPage">
+        <activity
+            android:name=".LoginPage"
+            android:label="LoginPage"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +25,22 @@
             android:name=".MainPage"
             android:label="@string/title_activity_main_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutPage" />
-        <activity android:name=".HistoryPage" />
-        <activity android:name=".selectionPage" />
-        <activity android:name=".ViewRestaurantPage"></activity>
+        <activity
+            android:name=".AboutPage"
+            android:label="AboutPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FavoritesPage"
+            android:label="FavoritesPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SelectionPage"
+            android:label="SelectionPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewRestaurantPage"
+            android:label="ViewRestaurantPage"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

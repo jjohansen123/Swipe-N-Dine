@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.selectionPage">
+    tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.SelectionPage">
 
 
     <TextView
@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="4.2 Italian" />
+        android:text="4.2 Italian"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/mainImage"

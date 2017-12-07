@@ -40,6 +40,7 @@ public class LoginPage extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private FirebaseAuth.AuthStateListener firebaseAuthListner;
+    private boolean isLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.login_page);
         callbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
-        //mAuth.signOut();
+        isLogout = getIntent().getBooleanExtra("isLogout",false);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList("email"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -70,9 +71,10 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                if (user != null && !isLogout && loginButton.getText().equals("Log out")) {
                     goMainScreen();
                 }
+                isLogout = false;
             }
         };
 
@@ -114,5 +116,13 @@ public class LoginPage extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mAuth.getCurrentUser() != null && loginButton.getText().equals("Log out")){
+            super.onBackPressed();
+        }
+    }
+
 
 }
