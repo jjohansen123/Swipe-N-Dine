@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryBackground"
+    android:background="@color/darkBackground"
     tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.AboutPage">
 
     <android.support.constraint.ConstraintLayout
@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/team_picture_holder" />
+            android:src="@drawable/group_photo_big" />
 
     </android.support.constraint.ConstraintLayout>
 
