@@ -41,6 +41,7 @@
             android:gravity="center"
             android:src="@drawable/yelp_trademark_rgb_outline"
             android:background="@drawable/button_drawable"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@id/mainImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

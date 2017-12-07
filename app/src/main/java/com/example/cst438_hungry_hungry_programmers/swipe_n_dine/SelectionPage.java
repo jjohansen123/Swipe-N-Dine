@@ -35,6 +35,7 @@ public class SelectionPage extends AppCompatActivity {
 
     TextView mRestaurantTitle;
     ImageView mMainImage;
+    ImageView mYelpLogo;
 
     YelpFusionApiFactory yelpFusionApiFactory;
     YelpFusionApi yelpFusionApi;
@@ -61,6 +62,7 @@ public class SelectionPage extends AppCompatActivity {
 
         mRestaurantTitle = (TextView) findViewById(R.id.titleLabel);
         mMainImage = (ImageView) findViewById(R.id.mainImage);
+        mYelpLogo = (ImageView) findViewById(R.id.yelpLogo);
 
         businessNames = new ArrayList<String>();
         businessImages = new ArrayList<String>();
@@ -71,7 +73,9 @@ public class SelectionPage extends AppCompatActivity {
 
             }
             public void onSwipeRight() {
-                //Toast.makeText(SelectionPage.this, "right", Toast.LENGTH_SHORT).show();
+                if (!isAtStart) {
+                    Toast.makeText(SelectionPage.this, "Favorited!", Toast.LENGTH_SHORT).show();
+                }
             }
             public void onSwipeLeft() {
                 if (isAtStart) {
@@ -129,6 +133,7 @@ public class SelectionPage extends AppCompatActivity {
                     .load(businessImages.get(currentBusinessIndex))
                     .into(mMainImage);
             currentUrl = businessUrls.get(currentBusinessIndex);
+            mYelpLogo.setVisibility(View.VISIBLE);
             currentBusinessIndex++;
 
             isAtStart = false;
