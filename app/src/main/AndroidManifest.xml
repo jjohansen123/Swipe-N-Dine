@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cst438_hungry_hungry_programmers.swipe_n_dine">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -12,7 +13,10 @@
         android:roundIcon="@drawable/swipe_n_dine_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".LoginPage"
             android:label="@string/app_name"
@@ -42,7 +46,16 @@
         <activity
             android:name=".ViewRestaurantPage"
             android:label="ViewRestaurantPage"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GroupPage"
+            android:label="@string/title_activity_group_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FriendsPage"
+            android:label="FriendsPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

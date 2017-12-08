@@ -15,6 +15,7 @@ public class MainPage extends AppCompatActivity {
     Button aboutButton;
     Button logoutButton;
     Button startButton;
+    Button friendsButton;
     Button favoritesButton;
 
     @Override
@@ -22,10 +23,15 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
-        aboutButton = (Button) findViewById(R.id.aboutUsButton);
-        logoutButton = (Button) findViewById(R.id.logoutButton);
+        friendsButton = (Button) findViewById(R.id.friendsButton);
         startButton = (Button) findViewById(R.id.startSwipingButton);
         favoritesButton = (Button) findViewById(R.id.favoritesButton);
+        friendsButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainPage.this,FriendsPage.class));
+            }
+        });
         startButton.setOnClickListener(optionsListener);
         aboutButton.setOnClickListener(optionsListener);
         logoutButton.setOnClickListener(optionsListener);

@@ -77,26 +77,10 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-                DatabaseReference users = root.child("users");
-                users.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        if (!snapshot.child(mAuth.getUid()).exists()) {
-                            User u = new User();
-                            u.setUid(mAuth.getUid());
-                            DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("users");
 
-                            users.setValue(u);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(getApplicationContext(), "Error logging in", Toast.LENGTH_LONG).show();
-                    }
-                });
                 if (user != null && !isLogout && loginButton.getText().equals("Log out")) {
+                    //save user data to database
+                    FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid()).child("uid").setValue(mAuth.getUid());
                     goMainScreen();
                 }
                 isLogout = false;
@@ -113,6 +97,9 @@ public class LoginPage extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Error logging in", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    saveFacebookUserData();//TODO: test
                 }
             }
         });
@@ -148,4 +135,35 @@ public class LoginPage extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    public void saveFacebookUserData()
+    {
+        mAuth = FirebaseAuth.getInstance();
+        // Line to let us see why it's not working
+        FacebookSdk.addLoggingBehavior(LoggingBehavior.REQUESTS);
+
+        // calls the /user/me endpoint to fetch the user data for the given access token.
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(), // TODO - eventually this won't be only our user, but the current user!
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+
+                        // get stuff from the JSON object
+                        try {
+                            String fbName = response.getJSONObject().get("name").toString();
+                            FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid()).child("name").setValue(fbName);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "name");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
 }

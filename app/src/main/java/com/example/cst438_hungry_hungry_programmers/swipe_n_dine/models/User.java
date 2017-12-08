@@ -1,5 +1,7 @@
 package com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,17 +11,26 @@ import java.util.List;
 
 public class User {
     public String uid;
-    public List<String> friends;
+    public String name;
+    public List<Friend> friends;
     public List<String> favorites;
     public List<String> groups;
 
     public User(){
         uid = "";
+        name = "";
         friends = new ArrayList<>();
         favorites = new ArrayList<>();
         groups = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getUid() {
         return uid;
@@ -29,11 +40,11 @@ public class User {
         this.uid = uid;
     }
 
-    public List<String> getFriends() {
+    public List<Friend> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<String> friends) {
+    public void setFriends(List<Friend> friends) {
         this.friends = friends;
     }
 
@@ -43,5 +54,33 @@ public class User {
 
     public void setFavorites(List<String> favorites) {
         this.favorites = favorites;
+    }
+
+    public static User parseSnapshot(DataSnapshot ds){
+        User result = new User();
+        for (DataSnapshot post: ds.getChildren()) {
+            if(post.getKey().equals("friends")){
+                for(DataSnapshot friend : post.getChildren()){
+                    result.friends.add(friend.getValue(Friend.class));
+                }
+            }
+            else if(post.getKey().equals("favorites")){
+                for(DataSnapshot fav : post.getChildren()){
+                    result.favorites.add((String) fav.getValue());
+                }
+            }
+            else if(post.getKey().equals("groups")){
+                for(DataSnapshot group : post.getChildren()){
+                    result.groups.add((String) group.getValue());
+                }
+            }
+            else if(post.getKey().equals("uid")){
+                result.uid = (String) post.getValue();
+            }
+            else if(post.getKey().equals("name")){
+                result.name = (String) post.getValue();
+            }
+        }
+        return result;
     }
 }
