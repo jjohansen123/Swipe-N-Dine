@@ -11,17 +11,26 @@ import java.util.List;
 
 public class User {
     public String uid;
-    public List<String> friends;
+    public String name;
+    public List<Friend> friends;
     public List<String> favorites;
     public List<String> groups;
 
     public User(){
         uid = "";
+        name = "";
         friends = new ArrayList<>();
         favorites = new ArrayList<>();
         groups = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getUid() {
         return uid;
@@ -31,11 +40,11 @@ public class User {
         this.uid = uid;
     }
 
-    public List<String> getFriends() {
+    public List<Friend> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<String> friends) {
+    public void setFriends(List<Friend> friends) {
         this.friends = friends;
     }
 
@@ -52,7 +61,7 @@ public class User {
         for (DataSnapshot post: ds.getChildren()) {
             if(post.getKey().equals("friends")){
                 for(DataSnapshot friend : post.getChildren()){
-                    result.friends.add((String) friend.getValue());
+                    result.friends.add(friend.getValue(Friend.class));
                 }
             }
             else if(post.getKey().equals("favorites")){
@@ -67,6 +76,9 @@ public class User {
             }
             else if(post.getKey().equals("uid")){
                 result.uid = (String) post.getValue();
+            }
+            else if(post.getKey().equals("name")){
+                result.name = (String) post.getValue();
             }
         }
         return result;

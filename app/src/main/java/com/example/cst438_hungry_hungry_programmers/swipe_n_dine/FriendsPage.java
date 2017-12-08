@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.Friend;
 import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -39,11 +40,10 @@ public class FriendsPage extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 mUser = User.parseSnapshot(dataSnapshot);
                 Toast.makeText(getApplicationContext(), mUser.getUid(), Toast.LENGTH_LONG).show();
-                for(String friend:mUser.friends){
-                    tvFriends.append(friend + "\n");
+                for(Friend f:mUser.friends){
+                    tvFriends.append("\n" + f.name + "\n");
                 }
             }
 
@@ -68,11 +68,16 @@ public class FriendsPage extends AppCompatActivity {
 
                         if (snapshot.child(friendUID).exists()) {
                             String key = userRef.child("friends").push().getKey();
-                            userRef.child("friends").child(key).setValue(friendUID);
+                            Friend f = new Friend();
+                            f.setName((String) snapshot.child(friendUID).child("name").getValue());
+                            f.setUid(friendUID);
+                            userRef.child("friends").child(key).setValue(f);
 
                             DatabaseReference friendRef = FirebaseDatabase.getInstance().getReference().child("users").child(friendUID);
                             key = friendRef.child("friends").push().getKey();
-                            friendRef.child("friends").child(key).setValue(mAuth.getUid());
+                            f.setName(mUser.getName());
+                            f.setUid(mUser.getUid());
+                            friendRef.child("friends").child(key).setValue(f);
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_LONG).show();
