@@ -16,6 +16,7 @@ public class MainPage extends AppCompatActivity {
     Button logoutButton;
     Button startButton;
     Button friendsButton;
+    Button favoritesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +24,18 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
 
         friendsButton = (Button) findViewById(R.id.friendsButton);
-        aboutButton = (Button) findViewById(R.id.aboutUsButton);
-        logoutButton = (Button) findViewById(R.id.logoutButton);
         startButton = (Button) findViewById(R.id.startSwipingButton);
-        startButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainPage.this,SelectionPage.class));
-            }
-        });
+        favoritesButton = (Button) findViewById(R.id.favoritesButton);
         friendsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainPage.this,FriendsPage.class));
             }
         });
+        startButton.setOnClickListener(optionsListener);
         aboutButton.setOnClickListener(optionsListener);
         logoutButton.setOnClickListener(optionsListener);
+        favoritesButton.setOnClickListener(optionsListener);
     }
 
 
@@ -47,7 +43,11 @@ public class MainPage extends AppCompatActivity {
     private OnClickListener optionsListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.aboutUsButton) {
+            if (v.getId() == R.id.startSwipingButton) {
+                Intent intent = new Intent(MainPage.this, SelectionPage.class);
+                startActivity(intent);
+            }
+            else if (v.getId() == R.id.aboutUsButton) {
                 Intent intent = new Intent(MainPage.this, AboutPage.class);
                 startActivity(intent);
             }
@@ -55,6 +55,10 @@ public class MainPage extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainPage.this, LoginPage.class);
                 intent.putExtra("isLogout",true);
+                startActivity(intent);
+            }
+            else if (v.getId() == R.id.favoritesButton) {
+                Intent intent = new Intent(MainPage.this, FavoritesPage.class);
                 startActivity(intent);
             }
         }
