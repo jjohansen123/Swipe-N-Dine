@@ -41,7 +41,6 @@ public class FriendsPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mUser = User.parseSnapshot(dataSnapshot);
-                Toast.makeText(getApplicationContext(), mUser.getUid(), Toast.LENGTH_LONG).show();
                 for(Friend f:mUser.friends){
                     tvFriends.append("\n" + f.name + "\n");
                 }

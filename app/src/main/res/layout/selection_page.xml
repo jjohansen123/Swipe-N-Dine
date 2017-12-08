@@ -4,32 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkBackground"
     tools:context="com.example.cst438_hungry_hungry_programmers.swipe_n_dine.SelectionPage">
 
-
-    <TextView
-        android:id="@+id/titleLabel"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/informationConstraint1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pizza Shop!"
-        android:layout_alignParentTop="true"
-        android:gravity="center" />
+        android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/rateCatLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:text="4.2 Italian"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/titleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Swipe Left on the Icon to Begin!"
+            android:layout_marginTop="30dp"
+            android:textSize="24dp"
+            android:color="@color/black"
+            android:gravity="center"
+            android:background="@color/primaryBackground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <ImageView
-        android:id="@+id/mainImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/rateCatLabel"
-        android:layout_below="@id/titleLabel" />
+        <ImageView
+            android:id="@+id/mainImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/swipe_n_dine_icon"
+            app:layout_constraintTop_toBottomOf="@id/titleLabel"
+            app:layout_constraintBottom_toTopOf="@id/yelpLogo" />
 
+        <ImageView
+            android:id="@+id/yelpLogo"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:src="@drawable/yelp_trademark_rgb_outline"
+            android:background="@drawable/button_drawable"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/mainImage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="openBrowser" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
