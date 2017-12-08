@@ -26,6 +26,8 @@ public class MainPage extends AppCompatActivity {
         friendsButton = (Button) findViewById(R.id.friendsButton);
         startButton = (Button) findViewById(R.id.startSwipingButton);
         favoritesButton = (Button) findViewById(R.id.favoritesButton);
+        aboutButton = (Button) findViewById(R.id.aboutUsButton);
+        logoutButton = (Button) findViewById(R.id.logoutButton);
         friendsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
