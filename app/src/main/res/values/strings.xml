@@ -2,6 +2,9 @@
     <string name="app_name">Swipe-N-Dine</string>
     <string name="title_activity_main_page">MainPage</string>
     <string name="facebook_app_id">162273334381885</string>
+    <string name="favorite_restaurants">
+        <b>El Pollo Rey</b>
+    </string>
     <string name="text_with_paragraphs">
         <b>Our Project:</b> \n
         Our team is David Jia, Coleman Johnston
