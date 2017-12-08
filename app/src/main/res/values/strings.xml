@@ -3,7 +3,7 @@
     <string name="title_activity_main_page">MainPage</string>
     <string name="facebook_app_id">162273334381885</string>
     <string name="title_activity_group_page">GroupPage</string>
-    <string name="friends">Friends</string>
+    <string name="friends">Friends:</string>
     <string name="add_friend">Add Friend</string>
     <string name="user_id">user_id</string>
     <string name="text_with_paragraphs">

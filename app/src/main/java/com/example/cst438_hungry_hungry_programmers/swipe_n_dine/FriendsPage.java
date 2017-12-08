@@ -26,6 +26,7 @@ public class FriendsPage extends AppCompatActivity {
     private User mUser;
     private FirebaseAuth mAuth;
     private String friendUID;
+    private TextView tvYourUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,11 @@ public class FriendsPage extends AppCompatActivity {
         btnAddFriend = (Button) findViewById(R.id.btnAddFriend);
         etFriendUID = (EditText) findViewById(R.id.etFriendUID);
         tvFriends = (TextView) findViewById(R.id.tvFriends);
+        tvYourUID = (TextView) findViewById(R.id.tvYourUID);
+
         mAuth = FirebaseAuth.getInstance();
+
+        tvYourUID.setText("Your user_id: " + mAuth.getUid());
 
         userRef = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid());
         userRef.addValueEventListener(new ValueEventListener() {
@@ -42,7 +47,7 @@ public class FriendsPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mUser = User.parseSnapshot(dataSnapshot);
                 for(Friend f:mUser.friends){
-                    tvFriends.append("\n" + f.name + "\n");
+                    tvFriends.append(f.name + "\n");
                 }
             }
 
