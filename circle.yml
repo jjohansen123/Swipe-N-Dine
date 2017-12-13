@@ -9,6 +9,9 @@ general:
 machine:
     environment:
         ANDROID_HOME: /usr/local/android-sdk-linux
+        ANDROID_BUILD_TOOLS: 26.0.2
+        clientId: clientId
+        clientSecret: clientSecret
 
 dependencies:
     override:
