@@ -10,8 +10,7 @@ machine:
   environment:
       ANDROID_HOME: /usr/local/android-sdk-linux
       ANDROID_BUILD_TOOLS: 26.0.2
-      clientId: clientId
-      clientSecret: clientSecret
+
 
 dependencies:
   pre:
@@ -20,6 +19,10 @@ dependencies:
       - echo y | android update sdk --no-ui --all --filter extra-google-m2repository
       - echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
       - echo y | android update sdk --no-ui --all --filter extra-android-support
+      echo $CLIENT_ID | base64 --decode > ~/$Swipe-N-Dine/app/src/main/res/values/api_keys.xml
+      echo $CLIENT_SECRET | base64 --decode > ~/$Swipe-N-Dine/app/src/main/res/values/api_keys.xml
+
+
 
   override:
       - chmod +x gradlew
