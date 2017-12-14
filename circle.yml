@@ -25,7 +25,7 @@ dependencies:
 
 
   override:
-      - mv /app/src/main/res/values/secrets.ci.yml /app/src/main/res/values/  secrets.yml
+      - mv /app/src/main/res/values/secrets.ci.yml /app/src/main/res/values/secrets.yml
       - chmod +x gradlew
       - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 test:
