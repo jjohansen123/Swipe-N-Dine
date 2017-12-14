@@ -13,7 +13,7 @@ public class User {
     public String uid;
     public String name;
     public List<Friend> friends;
-    public List<String> favorites;
+    public List<Restaurant> favorites;
     public List<String> groups;
 
     public User(){
@@ -48,11 +48,11 @@ public class User {
         this.friends = friends;
     }
 
-    public List<String> getFavorites() {
+    public List<Restaurant> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(List<String> favorites) {
+    public void setFavorites(List<Restaurant> favorites) {
         this.favorites = favorites;
     }
 
@@ -66,7 +66,7 @@ public class User {
             }
             else if(post.getKey().equals("favorites")){
                 for(DataSnapshot fav : post.getChildren()){
-                    result.favorites.add((String) fav.getValue());
+                    result.favorites.add(fav.getValue(Restaurant.class));
                 }
             }
             else if(post.getKey().equals("groups")){

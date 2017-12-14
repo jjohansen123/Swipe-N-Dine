@@ -17,6 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.Restaurant;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import com.yelp.fusion.client.connection.YelpFusionApi;
 import com.yelp.fusion.client.connection.YelpFusionApiFactory;
@@ -75,6 +79,9 @@ public class SelectionPage extends AppCompatActivity {
             public void onSwipeRight() {
                 if (!isAtStart) {
                     Toast.makeText(SelectionPage.this, "Favorited!", Toast.LENGTH_SHORT).show();
+                    Restaurant newFav = new Restaurant(businessNames.get(currentBusinessIndex - 1),currentUrl);
+                    DatabaseReference favoritesRef = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("favorites");
+                    favoritesRef.push().setValue(newFav);
                 }
             }
             public void onSwipeLeft() {
