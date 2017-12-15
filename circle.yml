@@ -30,3 +30,7 @@ test:
   override:
       - (./gradlew assemble):
           timeout: 360
+
+      - ./gradlew app:test
+
+      - mv app/build/reports/tests/debug $CIRCLE_TEST_REPORTS/AppUnitTests
