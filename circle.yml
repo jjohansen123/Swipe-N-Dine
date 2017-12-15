@@ -28,8 +28,6 @@ dependencies:
 
 test:
   override:
-      - ./gradlew app:assembleDebug
-
-      - ./gradlew app:test
-
-      - mv app/build/reports/tests/debug $CIRCLE_TEST_REPORTS/AppUnitTests
+      - (./gradlew assembleDebug):
+          timeout: 360
+          
