@@ -48,6 +48,14 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, AboutPage.class);
                 startActivity(intent);
             }
+            else if (v.getId() == R.id.favoritesButton) {
+                Intent intent = new Intent(MainPage.this, FavoritesPage.class);
+                startActivity(intent);
+            }
+            else if (v.getId() == R.id.friendsButton) {
+                Intent intent = new Intent (MainPage.this, FriendsPage.class);
+                startActivity(intent);
+            }
             else if (v.getId() == R.id.logoutButton) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainPage.this, LoginPage.class);
