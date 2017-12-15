@@ -33,4 +33,13 @@ public class Restaurant {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public boolean equals(Object other){
+        if(other instanceof Restaurant){
+            Restaurant r = (Restaurant) other;
+            return this.getUrl().equals(r.getUrl());
+        }
+        return false;
+    }
+
 }
