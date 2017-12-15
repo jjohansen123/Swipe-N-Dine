@@ -300,9 +300,12 @@ public class SelectionPage extends AppCompatActivity implements LocationListener
                             updateUI(loc);
                     }
                 } else {
+                    Toast.makeText(SelectionPage.this, "Unable to get location, returning the main menu", Toast.LENGTH_LONG).show();
                     loc.setLatitude(0);
                     loc.setLongitude(0);
                     updateUI(loc);
+                    Intent intent = new Intent(SelectionPage.this, MainPage.class);
+                    startActivity(intent);
                 }
             } else {
                 Log.d(TAG, "Can't get location");
