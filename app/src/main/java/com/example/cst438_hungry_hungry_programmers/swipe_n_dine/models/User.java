@@ -58,6 +58,11 @@ public class User {
 
     public static User parseSnapshot(DataSnapshot ds){
         User result = new User();
+
+        if(ds == null){
+            return result;
+        }
+
         for (DataSnapshot post: ds.getChildren()) {
             if(post.getKey().equals("friends")){
                 for(DataSnapshot friend : post.getChildren()){
@@ -82,5 +87,14 @@ public class User {
             }
         }
         return result;
+    }
+
+    public boolean equals(Object other){
+        if(other instanceof User){
+            User u = (User) other;
+
+            return(u.name.equals(this.name) && u.uid.equals(this.uid));
+        }
+        return false;
     }
 }
