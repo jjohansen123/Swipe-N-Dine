@@ -25,6 +25,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.Restaurant;
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.yelp.fusion.client.connection.YelpFusionApi;
 import com.yelp.fusion.client.connection.YelpFusionApiFactory;
@@ -59,6 +67,7 @@ public class SelectionPage extends AppCompatActivity implements LocationListener
     int numOfSearchResults = 20;
     int currentBusinessIndex = 0;
 
+
     final String TAG = "GPS";
     private final static int ALL_PERMISSIONS_RESULT = 101;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
@@ -75,6 +84,10 @@ public class SelectionPage extends AppCompatActivity implements LocationListener
 
     String latitude;
     String longitude;
+
+    User currentUser;
+
+    LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +139,10 @@ public class SelectionPage extends AppCompatActivity implements LocationListener
             public void onSwipeRight() {
                 if (!isAtStart) {
                     Toast.makeText(SelectionPage.this, "Favorited!", Toast.LENGTH_SHORT).show();
+                    Restaurant newFav = new Restaurant(businessNames.get(currentBusinessIndex - 1),currentUrl);
+                    if(!currentUser.getFavorites().contains(newFav)){
+                        FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("favorites").push().setValue(newFav);
+                    }
                 }
             }
             public void onSwipeLeft() {
@@ -156,6 +173,18 @@ public class SelectionPage extends AppCompatActivity implements LocationListener
             }
             public void onSwipeBottom() {
 
+            }
+        });
+
+        FirebaseDatabase.getInstance().getReference("/users/" + FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                currentUser = User.parseSnapshot(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(SelectionPage.this,"Error fetching user data",Toast.LENGTH_LONG);
             }
         });
     }
