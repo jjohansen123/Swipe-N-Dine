@@ -80,8 +80,7 @@ public class SelectionPage extends AppCompatActivity {
                 if (!isAtStart) {
                     Toast.makeText(SelectionPage.this, "Favorited!", Toast.LENGTH_SHORT).show();
                     Restaurant newFav = new Restaurant(businessNames.get(currentBusinessIndex - 1),currentUrl);
-                    DatabaseReference favoritesRef = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("favorites");
-                    favoritesRef.push().setValue(newFav);
+                    FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("favorites").push().setValue(newFav);
                 }
             }
             public void onSwipeLeft() {

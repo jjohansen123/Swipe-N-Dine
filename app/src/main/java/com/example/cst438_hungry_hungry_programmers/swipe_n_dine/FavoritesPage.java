@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.adapters.FavoritesAdapter;
 import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.Restaurant;
 import com.example.cst438_hungry_hungry_programmers.swipe_n_dine.models.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,24 +27,25 @@ import java.util.ArrayList;
 public class FavoritesPage extends AppCompatActivity {
 
     Button backToMain;
-    TextView favoriteChoice;
     User currentUser;
+    RecyclerView rvFavorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorites_page);
 
+        rvFavorites = (RecyclerView) findViewById(R.id.rvFavorites);
         backToMain = (Button) findViewById(R.id.backButton);
-        favoriteChoice = (TextView) findViewById(R.id.favoriteTexts);
         backToMain.setOnClickListener(optionsListener);
-        favoriteChoice.setOnClickListener(optionsListener);
+
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentUser = User.parseSnapshot(dataSnapshot);
-                favoriteChoice.setText(currentUser.getFavorites().get(0).getName());
+                rvFavorites.setAdapter(new FavoritesAdapter(FavoritesPage.this,currentUser.getFavorites()));
+                rvFavorites.setLayoutManager(new LinearLayoutManager(FavoritesPage.this));
             }
 
             @Override
@@ -56,16 +60,6 @@ public class FavoritesPage extends AppCompatActivity {
         public void onClick(View v) {
             if (v.getId() == R.id.backButton) {
                 Intent intent = new Intent(FavoritesPage.this, MainPage.class);
-                startActivity(intent);
-            }
-            else if (v.getId() == R.id.favoriteTexts) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-
-                //pass the url to intent data
-                intent.setData(Uri.parse("https://www.yelp.com/biz/el-pollo-rey-seaside-2"));
-
                 startActivity(intent);
             }
         }
