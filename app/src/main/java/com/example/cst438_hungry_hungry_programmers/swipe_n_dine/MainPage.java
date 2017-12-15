@@ -28,16 +28,11 @@ public class MainPage extends AppCompatActivity {
         favoritesButton = (Button) findViewById(R.id.favoritesButton);
         aboutButton = (Button) findViewById(R.id.aboutUsButton);
         logoutButton = (Button) findViewById(R.id.logoutButton);
-        friendsButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainPage.this,FriendsPage.class));
-            }
-        });
         startButton.setOnClickListener(optionsListener);
         aboutButton.setOnClickListener(optionsListener);
         logoutButton.setOnClickListener(optionsListener);
         favoritesButton.setOnClickListener(optionsListener);
+        friendsButton.setOnClickListener(optionsListener);
     }
 
 
@@ -61,6 +56,10 @@ public class MainPage extends AppCompatActivity {
             }
             else if (v.getId() == R.id.favoritesButton) {
                 Intent intent = new Intent(MainPage.this, FavoritesPage.class);
+                startActivity(intent);
+            }
+            else if (v.getId() == R.id.friendsButton) {
+                Intent intent = new Intent(MainPage.this,FriendsPage.class);
                 startActivity(intent);
             }
         }
