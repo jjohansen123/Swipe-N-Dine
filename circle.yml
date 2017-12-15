@@ -28,6 +28,7 @@ dependencies:
 
 test:
   override:
-      - (./gradlew assembleDebug):
-          timeout: 360
-          
+      - ./gradlew app:assembleDebug
+      - ./gradlew app:test
+      - ./gradlew jacocoTestReport
+      - mv app/build/reports/tests/debug $CIRCLE_TEST_REPORTS/AppUnitTests
