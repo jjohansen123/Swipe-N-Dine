@@ -78,7 +78,7 @@ public class LoginPage extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if (user != null && !isLogout && loginButton.getText().equals("Log out")) {
+                if (user != null && !isLogout && (loginButton.getText().equals("Log out") || loginButton.getText().equals("Logg av"))) {
                     //save user data to database
                     FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid()).child("uid").setValue(mAuth.getUid());
                     goMainScreen();
