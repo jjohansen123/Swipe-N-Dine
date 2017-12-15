@@ -20,6 +20,7 @@
         <activity
             android:name=".LoginPage"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,30 +31,37 @@
         <activity
             android:name=".MainPage"
             android:label="@string/title_activity_main_page"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AboutPage"
             android:label="AboutPage"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FavoritesPage"
             android:label="FavoritesPage"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SelectionPage"
             android:label="SelectionPage"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewRestaurantPage"
             android:label="ViewRestaurantPage"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GroupPage"
             android:label="@string/title_activity_group_page"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FriendsPage"
             android:label="FriendsPage"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden"/>
     </application>
